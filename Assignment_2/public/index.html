@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<!--Instructions
+    1. Click Run to run it on a browser. I prefer to use Google Chrome which has been tested for several times.
+    2. Open another page by typing "localhost:1337" to open another client.
+    3. We can see in the command saying "working" whenever you open a new page as a client.
+    4. Type in the message you want to send and you will see the Message Sent Confirmation and a Server Confirmation in a new line.
+    5. Press Enter or click Submit button both work.
+    -->
+
+<html ng-app="chatApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Chat Room</title>
+    <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+    <script src="client.js"></script>
+    <script src="../app.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <link href="main.css" rel="stylesheet" />
+</head>
+<body>
+    <!--The Interface of the Chat Room-->
+    <h1 class="h1">Chat Room</h1>
+    <div id="scroll1" ng-controller="ChatCtrl">
+        <div id="scroll2" ng-model="scroll">
+            <!--List to show the messages that client has sent and server has received-->
+            <ul>
+                <li class="list-group" ng-repeat="msg in msgs track by $index">
+                    <span class="li">{{msg}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <!--Give more space to show the message in order to make sure messages will not be covered by the form or the copyright-->
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <!--Control part used to input and submit-->
+            <form class="inputbox" ng-submit="sendMsg()">
+                Message:
+                <input class="textbox" type="text" ng-model="msg.text" />
+                <!--Hit enter to submit or click button to submit-->
+                <input class="button" type="submit" />
+            </form>
+        </div>
+        <!--Copyright, my name and student number-->
+        <div class="copyright">
+            Copyright: Chatting Room Application Developer: Zexu (Adam) Zhao Student#: 300759097
+        </div>
+    </div>
+</body>
+</html>
